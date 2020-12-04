@@ -1,7 +1,8 @@
 const express = require('express')
 const { body, validationResult } = require('express-validator')
-const bcrypt = require('bcrypt')
 const Author = require('../models/Author')
+const bcrypt = require('bcrypt')
+const saltRounds = 12
 const router = express.Router()
 
 // login check
@@ -62,6 +63,40 @@ router.get('/register', (req, res) => {
   res.render('home/register')
 })
 
+router.post(
+  '/register',
+  [
+    body('firstName').isLength({ min: 1 }).withMessage('First name must have at least 1 character'),
+    body('lastName').isLength({ min: 1 }).withMessage('Last name must have at least 1 character'),
+    body('email').isEmail().withMessage('Please enter a valid email address'),
+    body('password')
+      .isLength({ min: 6 })
+      .withMessage('Password must be at least 6 characters in length'),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() })
+    }
+    console.log('um...')
+    if (req.body.password !== req.body.confirmpass) {
+      return res.send("passwords must match<br><a href='/register'>Back</a>")
+    }
+
+    const { firstName, lastName, email } = req.body
+
+    const found = await Author.findOne({ email: email })
+    if (found) {
+      console.log('email address already registered')
+      return res.redirect('/login')
+    }
+
+    const password = await bcrypt.hash(req.body.password, saltRounds)
+    const author = new Author({ firstName, lastName, email, password })
+    await author.save()
+    res.send("Author created, please login<br><a href='/login'>Login</a>")
+  }
+)
 router.get('/members', checkLogin, (req, res) => {
   res.render('home/members')
 })
