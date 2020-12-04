@@ -1,0 +1,13 @@
+extends ../layout
+block content
+    h1 #{author.fullName}
+
+    div
+        button
+            a(href='/authors/' + author._id + '/edit') Edit
+    div
+        form(action='/authors/' + author._id + '/delete?_method=DELETE' method='POST')
+            button(type='submit') Delete
+    div
+        button
+            a(href='/') Home

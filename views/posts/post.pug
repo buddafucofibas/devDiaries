@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+    h1 Will display post #{id}
+
+    div
+        button
+            a(href='/posts/' + id + '/edit') Edit
+    div
+        form(action='/posts/' + id + '/delete?_method=DELETE' method='POST')
+            button(type='submit') Delete

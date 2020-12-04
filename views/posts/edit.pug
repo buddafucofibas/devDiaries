@@ -1,0 +1,6 @@
+extends ../layout
+
+block content
+    h1 Form to edit post #{id}
+    form(action='/posts/'+id+'?_method=PATCH' method='POST')
+        button(type = submit) Submit
