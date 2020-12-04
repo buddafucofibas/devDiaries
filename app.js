@@ -20,9 +20,18 @@ const port = process.env.PORT || 3000
 
 // connect to database
 const uri = process.env.ATLAS_URI
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
-  console.log('connected to database via Atlas')
-})
+mongoose.connect(
+  uri,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  },
+  () => {
+    console.log('connected to database via Atlas')
+  }
+)
 
 // set up sessions
 app.use(

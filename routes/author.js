@@ -92,11 +92,7 @@ router.patch(
 
       const id = req.params.id
       const { firstName, lastName, email } = req.body
-      await Author.findByIdAndUpdate(
-        id,
-        { firstName, lastName, email },
-        { useFindAndModify: false }
-      )
+      await Author.findByIdAndUpdate(id, { firstName, lastName, email })
       res.redirect(`/authors/${id}`)
     } catch (err) {
       console.error(err)
