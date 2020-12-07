@@ -1,6 +1,13 @@
 extends ../layout
 
 block content
-    h1 Form for new post
-    form(action='/posts/new' method='POST')
-        button Submit 
+    h1 Create new posts
+
+    form(action='/posts/' + author._id + '/new' method='POST')
+        div
+            label(for='title') Title
+            input(type='text' id='title' name='title' required)
+        div
+            label(for='content') Post
+            textarea(id='content' name='content' required)
+        button(type="submit") Create Post
