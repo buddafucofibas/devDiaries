@@ -46,3 +46,10 @@ h1 {
   height: auto;
   border-radius: 10px;
 }
+
+.picHolder {
+  height: 87.5px;
+  width: 87.5px;
+  background-color: maroon;
+  border-radius: 10px;
+}
