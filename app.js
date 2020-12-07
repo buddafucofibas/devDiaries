@@ -75,24 +75,3 @@ app.listen(port, () => {
 })
 
 console.clear()
-
-/**
- * GET    '/'                   home page -x
- * GET    '/register'           display registration form -x
- * GET    '/login'              display login form  -x
- *
- * GET    '/authors'            display registered authors -x
- * POST   '/authors/new'        creates new author -x
- * GET    '/authors/:id'        display specific author and their posts -x
- * GET    '/authors/:id/edit'   display form to edit author -x
- * PATCH  '/authors/:id         edits specific author -x
- * DELETE '/authors/:id/delete  removes author -x
- *
- * GET    '/posts'              displays all posts -x
- * GET    '/posts/new'          displays form to make new post -x
- * POST   '/posts/new'          makes new post -x
- * GET    '/posts/:id'          displays specific post -x
- * GET    '/posts/:id/edit'     display form to edit post -x
- * PATCH  '/posts/:id           edits specific post -x
- * DELETE '/posts/:id/delete    removes post -x
- */
