@@ -15,13 +15,15 @@ const checkLogin = (req, res, next) => {
 
 router.get('/', (req, res) => {
   if (req.session.user_id) {
-    console.log('you are logged in')
     return res.redirect('/members')
   }
   res.render('home/home')
 })
 
 router.get('/login', (req, res) => {
+  if (req.session.user_id) {
+    return res.redirect('/members')
+  }
   res.render('home/login')
 })
 
@@ -41,7 +43,7 @@ router.post(
       const { email, password } = req.body
       const author = await Author.findOne({ email: email })
       if (!author) {
-        console.log('Email not found, please registered')
+        console.log('Email not found, please register')
         return res.redirect('/register')
       }
 
@@ -78,7 +80,6 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() })
     }
-    console.log('um...')
     if (req.body.password !== req.body.confirmpass) {
       return res.send("passwords must match<br><a href='/register'>Back</a>")
     }
