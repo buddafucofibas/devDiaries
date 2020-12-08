@@ -11,9 +11,7 @@ block content
                 p #{post.author.fullName}
     //- needs work
     if owner
-        div
-            a(href='/posts/' + author._id + '/new')
-                button Create Post
+
         div
             a(href='/authors/' + author._id + '/edit') 
                 button Edit
