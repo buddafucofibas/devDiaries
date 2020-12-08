@@ -28,7 +28,16 @@ router.post('/new', async (req, res) => {
   }
 })
 
-router.get('/:id', async (req, res) => {})
+router.get('/:id', async (req, res) => {
+  try {
+    const id = req.params.id
+    const post = await Post.findById(id)
+    const isOwner = req.session.user_id === post.author._id.toString()
+    return res.render('posts/post', { post, isOwner })
+  } catch (err) {
+    res.status(500).json({ error: err })
+  }
+})
 
 router.get('/:id/edit', (req, res) => {
   const id = req.params.id
