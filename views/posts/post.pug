@@ -1,11 +1,14 @@
 extends ../layout
 
 block content
-    h1 Will display post #{id}
+    h2 #{post.title}
+    p #{post.content}
+    h6 #{post.author.fullName}
 
-    div
-        button
-            a(href='/posts/' + id + '/edit') Edit
-    div
-        form(action='/posts/' + id + '/delete?_method=DELETE' method='POST')
-            button(type='submit') Delete
+    if isOwner
+        div
+            button
+                a(href='#') Edit
+        div
+            form(action='/posts/<tbd>/delete?_method=DELETE' method='POST')
+                button(type='submit') Delete
