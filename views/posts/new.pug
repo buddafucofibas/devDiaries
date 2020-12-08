@@ -3,7 +3,7 @@ extends ../layout
 block content
     h1 Create new posts
 
-    form(action='/posts/' + author._id + '/new' method='POST')
+    form(action='/posts/new' method='POST')
         div
             label(for='title') Title
             input(type='text' id='title' name='title' required)
