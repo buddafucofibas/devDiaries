@@ -8,7 +8,7 @@ block content
     if isOwner
         div
             button
-                a(href='#') Edit
+                a(href='/posts/' + post._id + '/edit') Edit
         div
-            form(action='/posts/<tbd>/delete?_method=DELETE' method='POST')
+            form(action='/posts/' + post._id +'/delete?_method=DELETE' method='POST')
                 button(type='submit') Delete
