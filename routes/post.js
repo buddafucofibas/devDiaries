@@ -3,13 +3,6 @@ const Post = require('../models/Post')
 const Author = require('../models/Author')
 const router = express.Router()
 
-const checkIsOwner = (req, res, next) => {
-  if (req.params.id !== req.session.user_id) {
-    return res.status(401).send('Action not authorized')
-  }
-  next()
-}
-
 router.get('/', async (req, res) => {
   try {
     const posts = await Post.find().populate('author').exec()
@@ -19,42 +12,36 @@ router.get('/', async (req, res) => {
   }
 })
 
-router.get('/:id/new', checkIsOwner, async (req, res) => {
-  const id = req.params.id
-  const author = await Author.findById(id)
-  res.render('posts/new', { author: author })
+router.get('/new', async (req, res) => {
+  res.render('posts/new')
 })
 
-router.post('/:id/new', checkIsOwner, async (req, res) => {
+router.post('/new', async (req, res) => {
   try {
-    const id = req.params.id
-    const author = await Author.findById(id)
+    const author = req.session.user_id
     const { title, content } = req.body
-    const post = new Post({ title, content, author: author._id })
+    const post = new Post({ title, content, author })
     await post.save()
-    res.redirect(`/authors/${id}`)
+    return res.redirect('/posts')
   } catch (err) {
-    res.send(err)
+    res.status(500).json({ error: err })
   }
 })
 
-router.get('/:id', (req, res) => {
-  const id = req.params.id
-  res.render('posts/post', { id: id })
-})
+router.get('/:id', async (req, res) => {})
 
-router.get('/:id/edit', checkIsOwner, (req, res) => {
+router.get('/:id/edit', (req, res) => {
   const id = req.params.id
   res.render('posts/edit', { id: id })
 })
 
-router.patch('/:id', checkIsOwner, (req, res) => {
+router.patch('/:id', (req, res) => {
   const id = req.params.id
   res.set('refresh', `2;url=http://localhost:3000/posts/${id}`)
   res.redirect(201, `/${id}`)
 })
 
-router.delete('/:id/delete', checkIsOwner, (req, res) => {
+router.delete('/:id/delete', (req, res) => {
   const id = req.params.id
   res.send(`post ${id} will be deleted here`)
 })
