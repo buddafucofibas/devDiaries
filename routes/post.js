@@ -11,7 +11,12 @@ const checkIsOwner = (req, res, next) => {
 }
 
 router.get('/', async (req, res) => {
-  res.render('posts/posts')
+  try {
+    const posts = await Post.find().populate('author').exec()
+    res.render('posts/posts', { posts: posts })
+  } catch (err) {
+    res.json({ error: err })
+  }
 })
 
 router.get('/:id/new', checkIsOwner, async (req, res) => {
