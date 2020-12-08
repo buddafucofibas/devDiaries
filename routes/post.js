@@ -51,15 +51,22 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-router.get('/:id/edit', checkIsOwner, (req, res) => {
+router.get('/:id/edit', checkIsOwner, async (req, res) => {
   const id = req.params.id
-  res.render('posts/edit', { id: id })
+  const post = await Post.findById(id)
+  res.render('posts/edit', { post })
 })
 
-router.patch('/:id', checkIsOwner, (req, res) => {
+router.patch('/:id', checkIsOwner, async (req, res) => {
   const id = req.params.id
-  res.set('refresh', `2;url=http://localhost:3000/posts/${id}`)
-  res.redirect(201, `/${id}`)
+  const { title, content } = req.body
+  const post = await Post.findById(id)
+  post.title = title
+  post.content = content
+  post.dateCreated = new Date()
+  await post.save()
+
+  res.redirect('/posts')
 })
 
 router.delete('/:id/delete', checkIsOwner, (req, res) => {
