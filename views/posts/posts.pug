@@ -5,13 +5,16 @@ block content
 
     div
         each post in posts
-            a(href='#')
+            a(href='/posts/' + post._id)
                 div
                     h3 #{post.title}
                     p #{post.content}
                     p - #{post.author.fullName}
                     h6 #{post.dateCreated}
 
+    div
+        button
+            a(href='/posts/new') Create Post
     div
         button
             a(href='/members') Members Area
