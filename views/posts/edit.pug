@@ -1,6 +1,13 @@
 extends ../layout
 
 block content
-    h1 Form to edit post #{id}
-    form(action='/posts/'+id+'?_method=PATCH' method='POST')
-        button(type = submit) Submit
+    h1 Edit post
+
+    form(action='/posts/' + post._id + '?_method=PATCH' method='POST')
+        div
+            label(for='title') Title
+            input(type='text' id='title' name='title' value=post.title required)
+        div
+            label(for='content') Post
+            textarea(id='content' name='content' required) #{post.content}
+        button(type="submit") Edit Post
