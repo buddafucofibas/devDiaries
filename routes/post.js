@@ -3,6 +3,18 @@ const Post = require('../models/Post')
 const Author = require('../models/Author')
 const router = express.Router()
 
+const checkIsOwner = async (req, res, next) => {
+  const postID = req.params.id
+  const post = await Post.findById(postID)
+  const authorID = post.author._id.toString()
+  const userID = req.session.user_id
+
+  if (userID !== authorID) {
+    return res.status(401).json({ msg: 'User not authorized to perform action' })
+  }
+  next()
+}
+
 router.get('/', async (req, res) => {
   try {
     const posts = await Post.find().populate('author').exec()
@@ -39,18 +51,18 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', checkIsOwner, (req, res) => {
   const id = req.params.id
   res.render('posts/edit', { id: id })
 })
 
-router.patch('/:id', (req, res) => {
+router.patch('/:id', checkIsOwner, (req, res) => {
   const id = req.params.id
   res.set('refresh', `2;url=http://localhost:3000/posts/${id}`)
   res.redirect(201, `/${id}`)
 })
 
-router.delete('/:id/delete', (req, res) => {
+router.delete('/:id/delete', checkIsOwner, (req, res) => {
   const id = req.params.id
   res.send(`post ${id} will be deleted here`)
 })
