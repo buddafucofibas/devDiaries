@@ -5,10 +5,12 @@ block content
 
     if posts
         each post in posts
-            div
-                h3 #{post.title}
-                p #{post.content}
-                p #{post.author.fullName}
+            a(href='/posts/' + post._id)
+                div
+                    h3 #{post.title}
+                    p #{post.content}
+                    p - #{author.fullName}
+                    h6 #{post.dateCreated}
     //- needs work
     if owner
 
