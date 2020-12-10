@@ -2,14 +2,10 @@ extends ../layout
 
 block content
 
-    h1 Home Page
-    div
-        button
-            a(href='/login') Login
-    div
-        button
-            a(href='/register') Register
-    div
-        button
-            a(href='/members') Successful Login
-    
+    .container.home
+        .wrapper
+            h2 devDiaries
+            div
+                a(href='/login' class='home_nav') Login
+            div
+                a(href='/register' class='home_nav') Register
