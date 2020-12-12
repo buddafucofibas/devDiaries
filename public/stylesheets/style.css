@@ -5,8 +5,9 @@
   padding: 0;
 }
 
-body {
-  font: 1em/1.1 Lato;
+body,
+html {
+  height: 100%;
 }
 
 :root {
@@ -15,65 +16,130 @@ body {
   --light-color: #f7f7f7;
 }
 
-/* Remove Defaults */
 a {
-  color: inherit;
   text-decoration: none;
+  color: inherit;
 }
 
 li {
   list-style: none;
 }
 
-/* Nav Styling */
-nav {
-  background: var(--primary-color);
+/* Utilities */
+
+.hidden {
+  display: none !important;
+}
+
+.red_outline {
+  border: 1px dashed red !important;
+}
+body {
+  font: 1em/1.1 Lato;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+/* navBar styling */
+
+.header {
+  background-color: var(--primary-color);
+}
+
+.main_nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1em;
   color: var(--secondary-color);
 }
 
-nav .container {
-  padding: 0.5em 2em;
+.main_nav ul {
   display: flex;
-  justify-content: space-between;
-}
-nav i {
-  color: var(--light-color);
-  margin-left: 5px;
-}
-.gen_nav {
-  display: none;
 }
 
-.hamburger {
+.nav_links {
+  margin: 0 10px;
+  padding: 5px 0;
+}
+
+.nav_links:hover {
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+h1 {
+  margin: 10px 0;
+}
+
+/* Hamburger Component */
+.hamburger_wrapper {
+  height: 25px;
+  width: 25px;
   display: flex;
   align-items: center;
-  height: 25px;
 }
 
-.hamburger_wrapper:hover {
-  cursor: pointer;
-}
-
-.hamburger div {
+.hamburger_wrapper div {
   width: 25px;
   height: 2px;
   background: #f7f7f7;
   position: relative;
 }
 
-.hamburger div:before,
-.hamburger div:after {
+.hamburger_wrapper div:before,
+.hamburger_wrapper div:after {
   content: '';
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #f7f7f7;
+  background-color: inherit;
 }
 
-.hamburger div:before {
+.hamburger_wrapper div:before {
   top: 5px;
 }
 
-.hamburger div:after {
+.hamburger_wrapper div:after {
   bottom: 5px;
 }
+
+/* landing page styling */
+
+.home {
+  position: relative;
+  top: 25vh;
+}
+
+.landing_wrapper {
+  padding: 1em;
+  width: 90%;
+  margin: auto;
+  border: 1px solid var(--primary-color);
+  border-radius: 10px;
+}
+
+.landing_wrapper h2 {
+  position: absolute;
+  top: -20px;
+  display: inline-block;
+  padding: 0 10px;
+  background: #fff;
+}
+
+.home_nav {
+  text-align: center;
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  margin: 10px auto;
+  border-radius: 5px;
+  text-transform: uppercase;
+  padding: 0.5em;
+}
+
+.home_nav a {
+  display: block;
+}
+
+/* login page styling */
