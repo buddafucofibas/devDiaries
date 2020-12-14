@@ -1,12 +1,18 @@
 extends ../layout
 block content
-    h2 Login
-    form(action='/login' method='POST')
-        div
-            label(for='email') Email Address
-            input(type='email' id='email' name='email' required)
-        div
-            label(for='password') Password
-            input(type='password' id='password' name='password' required)
-        button(type='submit') Login
+
+    section.landing_wrapper.flex
+        .landing_main.flex
+            .wrapper_backing
+            .wrapper.flex
+                h2.home_heading Login
+                .link_wrapper
+                    form(action='/login' method='POST')
+                        div
+                            label.hidden(for='email') Email Address
+                            input#email.inpt(type='email' name='email' placeholder='email address' required)
+                        div
+                            label.hidden(for='password') Password
+                            input#password.inpt(type='password' name='password' placeholder='password' required)
+                        button.home_nav.ctr(type='submit') Login
     
