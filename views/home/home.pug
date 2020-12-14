@@ -1,12 +1,13 @@
 extends ../layout
 
 block content
-
-    .container.home
-        .landing_wrapper
-            h2 devDiaries
-            div(class='home_nav')
-                a(href='/login' ) Login
-            div(class='home_nav')
-                a(href='/register' ) Register
-    .background_effect
+    section.landing_wrapper.flex
+        .landing_main.flex
+            .wrapper_backing
+            .wrapper(class='flex')
+                h2.home_heading devDiaries
+                .link_wrapper
+                    div(class='home_nav')
+                        a(href='/login' ) Login
+                    div(class='home_nav')
+                        a(href='/register' ) Register

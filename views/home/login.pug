@@ -1,7 +1,6 @@
 extends ../layout
 block content
-    h1 Login
-
+    h2 Login
     form(action='/login' method='POST')
         div
             label(for='email') Email Address
@@ -10,6 +9,4 @@ block content
             label(for='password') Password
             input(type='password' id='password' name='password' required)
         button(type='submit') Login
-    div
-        button
-            a(href='/') Home
+    
