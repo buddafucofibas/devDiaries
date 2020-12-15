@@ -1,25 +1,26 @@
 extends ../layout
+
 block content
-    h1 TODO registration form
-
-    form(action='/register' method='POST')
-        div
-            label(for='firstName') First Name
-            input(type='text' id='firstName' name='firstName' required)
-        div
-            label(for='lastName') Last Name
-            input(type='text' id='lastName' name='lastName' required)
-        div
-            label(for='email') Email
-            input(type='email' id='email' name='email' required)
-        div
-            label(for='password') Password
-            input(type='password' id='password' name='password' required)
-        div
-            label(for='confirmpass') Confirm Password
-            input(type='password' id='confirmpass' name='confirmpass' required)
-        button(type='submit') Submit
-
-    div
-        button
-            a(href='/') Home    
+    section.landing_wrapper.flex
+        .landing_main.flex
+            .wrapper_backing
+            .wrapper.flex
+                h2.home_heading Register
+                .link_wrapper
+                    form(action='/register' method='POST')
+                        div.flex.reg
+                            label.lbl(for='firstName') First Name
+                            input#firstName.inpt(type='text' name='firstName' required)
+                        div.flex.reg
+                            label.lbl(for='lastName') Last Name
+                            input#lastName.inpt(type='text' name='lastName' required)
+                        div.flex.reg
+                            label.lbl(for='email') Email
+                            input#email.inpt(type='email' name='email' required)
+                        div.flex.reg
+                            label.lbl(for='password') Password
+                            input#password.inpt(type='password' name='password' required)
+                        div.flex.reg.my-BM
+                            label.lbl(for='confirmpass') Confirm Password
+                            input#confirmpass.inpt(type='password' name='confirmpass' required)
+                        button.home_nav.ctr(type='submit') Submit

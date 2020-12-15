@@ -42,7 +42,7 @@ body {
   font: 1em/1.1 Lato;
 }
 
-/* Utilities */
+/***************** Utilities ****************/
 
 .hidden {
   display: none !important;
@@ -65,7 +65,8 @@ body {
   display: block;
   text-align: center;
 }
-/* navBar styling */
+
+/****************** navBar styling ********************/
 .header {
   background-color: var(--primary-color);
   position: fixed;
@@ -99,7 +100,7 @@ h1 {
   margin: 10px 0;
 }
 
-/* Hamburger Component */
+/****************** Hamburger Component *****************/
 .hamburger_wrapper {
   height: 25px;
   width: 25px;
@@ -131,7 +132,7 @@ h1 {
   bottom: 5px;
 }
 
-/* landing page styling */
+/**************** landing page styling ***************/
 
 .landing_wrapper {
   height: 100%;
@@ -172,6 +173,7 @@ h1 {
   left: 20px;
   background: var(--light-color);
   align-self: start;
+  padding: 0 5px;
 }
 
 .link_wrapper {
@@ -196,7 +198,7 @@ h1 {
   text-align: center;
 }
 
-/* login page */
+/************ login page **************/
 
 .inpt {
   width: 100%;
@@ -205,4 +207,24 @@ h1 {
   font-size: 1rem;
   border: 1px solid #e6e6e6;
   border-radius: 2px;
+}
+
+/**************** Registration Styling ****************/
+.reg {
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.reg .inpt {
+  width: 90%;
+  margin: 5px auto;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 2px;
+}
+
+.reg .lbl {
+  position: relative;
+  left: 20px;
 }
