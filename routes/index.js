@@ -17,14 +17,14 @@ router.get('/', (req, res) => {
   if (req.session.user_id) {
     return res.redirect('/members')
   }
-  res.render('home/home')
+  res.render('home/home', { loggedOut: true })
 })
 
 router.get('/login', (req, res) => {
   if (req.session.user_id) {
     return res.redirect('/members')
   }
-  res.render('home/login')
+  res.render('home/login', { loggedOut: true })
 })
 
 router.post(
@@ -62,7 +62,7 @@ router.post(
 )
 
 router.get('/register', (req, res) => {
-  res.render('home/register')
+  res.render('home/register', { loggedOut: true })
 })
 
 router.post(
@@ -100,6 +100,11 @@ router.post(
 )
 router.get('/members', checkLogin, (req, res) => {
   res.render('home/members')
+})
+
+router.get('/signout', (req, res) => {
+  req.session.user_id = null
+  res.redirect('/')
 })
 
 module.exports = router

@@ -22,7 +22,11 @@ html(lang='en')
                         a(href='#' class='nav_links') About
                     li
                         a(href='#' class='nav_links') Contact
-                    li
-                        a(href='/login' class='nav_links') Login
+                    if  loggedOut
+                        li
+                            a(href='/login' class='nav_links') Login
+                    else
+                        li
+                            a(href='/signout' class='nav_links') Signout
 
         block content
