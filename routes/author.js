@@ -17,7 +17,7 @@ const checkIsOwner = (req, res, next) => {
 router.get('/', async (req, res) => {
   try {
     const authors = await Author.find()
-    res.render('authors/authors', { authors: authors })
+    res.render('authors/authors', { authors: authors, req })
   } catch (err) {
     res.status(500).json({ error: err })
   }
@@ -40,7 +40,7 @@ router.get('/:id', async (req, res) => {
       console.log('author not found')
       return res.redirect('/authors')
     }
-    res.render('authors/author', { author: author, owner: owner, posts: posts })
+    res.render('authors/author', { author: author, owner: owner, posts: posts, req })
   } catch (err) {
     console.error(err)
     res.redirect('/authors')
@@ -51,7 +51,7 @@ router.get('/:id/edit', checkIsOwner, async (req, res) => {
   const id = req.params.id
   try {
     const author = await Author.findById(id)
-    res.render('authors/edit', { author: author })
+    res.render('authors/edit', { author: author, req })
   } catch (err) {
     console.error(err)
     res.redirect('/authors')

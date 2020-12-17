@@ -103,7 +103,7 @@ router.get('/members', checkLogin, async (req, res) => {
   try {
     const authors = await Author.find()
     const posts = await Post.find()
-    res.render('home/members', { authors, posts })
+    res.render('home/members', { authors, posts, req })
   } catch (err) {
     res.status(500).json({ error: err })
   }
