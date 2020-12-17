@@ -1,6 +1,7 @@
 const express = require('express')
 const { body, validationResult } = require('express-validator')
 const Author = require('../models/Author')
+const Post = require('../models/Post')
 const bcrypt = require('bcrypt')
 const saltRounds = 12
 const router = express.Router()
@@ -98,8 +99,14 @@ router.post(
     res.send("Author created, please login<br><a href='/login'>Login</a>")
   }
 )
-router.get('/members', checkLogin, (req, res) => {
-  res.render('home/members')
+router.get('/members', checkLogin, async (req, res) => {
+  try {
+    const authors = await Author.find()
+    const posts = await Post.find()
+    res.render('home/members', { authors, posts })
+  } catch (err) {
+    res.status(500).json({ error: err })
+  }
 })
 
 router.get('/signout', (req, res) => {
