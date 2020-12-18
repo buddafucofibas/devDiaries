@@ -47,7 +47,7 @@ router.get('/:id', async (req, res) => {
     const id = req.params.id
     const post = await Post.findById(id)
     const isOwner = req.session.user_id === post.author._id.toString()
-    return res.render('posts/post', { post, isOwner })
+    return res.render('posts/post', { post, isOwner, req })
   } catch (err) {
     res.status(500).json({ error: err })
   }
