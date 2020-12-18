@@ -20,12 +20,17 @@ html(lang='en')
                         a(href='/' class='nav_links') Home
                     li
                         a(href='#' class='nav_links') About
-                    li
-                        a(href='#' class='nav_links') Contact
+                
                     if  loggedOut
+                        li
+                            a(href='/login' class='nav_links') Profile
+
                         li
                             a(href='/login' class='nav_links') Login
                     else
+                        li
+                            a(href='/authors/' + req.session.user_id class='nav_links') Profile
+
                         li
                             a(href='/signout' class='nav_links') Signout
 

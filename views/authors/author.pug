@@ -1,29 +1,67 @@
 extends ../layout
 block content
 
-    h1 #{author.fullName}
+    //- h1 #{author.fullName}
 
-    if posts
-        each post in posts
-            a(href='/posts/' + post._id)
-                div
-                    h3 #{post.title}
-                    p #{post.content}
-                    p - #{author.fullName}
-                    h6 #{post.dateCreated}
-    //- needs work
-    if owner
+    //- if posts
+    //-     each post in posts
+    //-         a(href='/posts/' + post._id)
+    //-             div
+    //-                 h3 #{post.title}
+    //-                 p #{post.content}
+    //-                 p - #{author.fullName}
+    //-                 h6 #{post.dateCreated}
+    //- //- needs work
+    //- if owner
 
-        div
-            a(href='/authors/' + author._id + '/edit') 
-                button Edit
-        div
-            form(action='/authors/' + author._id + '/delete?_method=DELETE' method='POST')
-                button(type='submit') Delete
+    //-     div
+    //-         a(href='/authors/' + author._id + '/edit') 
+    //-             button Edit
+    //-     div
+    //-         form(action='/authors/' + author._id + '/delete?_method=DELETE' method='POST')
+    //-             button(type='submit') Delete
 
-    div
-        a(href='/') 
-            button Home
-    div
-        a(href='/authors') 
-            button Back
+    //- div
+    //-     a(href='/') 
+    //-         button Home
+    //- div
+    //-     a(href='/authors') 
+    //-         button Back
+
+    .container.profile
+        .columns.flex
+            .col.flex33.mr20
+                .author_bio.prfl_border
+                    .prfl_pic
+                        a(href="")
+                            .img
+                    .prfl_name
+                        h2 #{author.fullName}
+                    .prfl_about
+                        h4 About  
+                        p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum dolor dolorum minus ipsam mollitia magnam aspernatur deleniti quae tempore nam.
+                    if owner
+                        .prfl_panel.flex
+                            a(href='/authors/' + author._id + '/edit') 
+                                button Edit
+                            form(action='/authors/' + author._id + '/delete?_method=DELETE' method='POST')
+                                button(type='submit') Delete
+            .col.flex66
+                .posts
+                    if posts
+                        each post in posts
+                            a(href="")
+                                .post
+                                    p.pst_title #{post.title}
+                                    p.pst_content #{post.content}
+                                    p.pst_time #{post.dateCreated}
+                form(action='/posts/new' method='POST')
+                    .post.newPost
+                        div.flexcol
+                            label(for='title') Title
+                            input.inpt(type='text' id='title' name='title' required)
+                        div.flexcol
+                            label(for='content') Post
+                            textarea.inpt(id='content' name='content' required)
+                        button.home_nav.ctr(type="submit") Create Post
+                                

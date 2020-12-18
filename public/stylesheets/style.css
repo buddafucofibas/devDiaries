@@ -56,8 +56,64 @@ body {
   display: flex;
 }
 
+.flexcol {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex10 {
+  flex-basis: 10%;
+}
+.flex20 {
+  flex-basis: 20%;
+}
+.flex30 {
+  flex-basis: 30%;
+}
+.flex40 {
+  flex-basis: 40%;
+}
+.flex50 {
+  flex-basis: 50%;
+}
+.flex60 {
+  flex-basis: 60%;
+}
+.flex70 {
+  flex-basis: 70%;
+}
+.flex80 {
+  flex-basis: 80%;
+}
+.flex90 {
+  flex-basis: 90%;
+}
+.flex100 {
+  flex-basis: 100%;
+}
+
+.flex25 {
+  flex-basis: 25%;
+}
+
+.flex75 {
+  flex-basis: 75%;
+}
+
+.flex33 {
+  flex-basis: 33%;
+}
+
+.flex66 {
+  flex-basis: 66%;
+}
+
+.mr20 {
+  margin-right: 20px;
+}
+
 .container {
-  width: 50%;
+  max-width: 980px;
   margin: auto;
 }
 
@@ -227,4 +283,110 @@ h1 {
 .reg .lbl {
   position: relative;
   left: 20px;
+}
+
+/* Member page styling */
+.container.profile {
+  padding-top: 5rem;
+}
+
+.prfl_pic .img {
+  position: relative;
+  height: 75px;
+  width: 75px;
+  background: var(--primary-color);
+  border-radius: 100%;
+}
+
+.prfl_pic .img:before,
+.prfl_pic .img:after {
+  content: '';
+  position: absolute;
+  height: 40px;
+  width: 5px;
+  background: var(--secondary-color);
+  top: 18.75px;
+  left: 35.25px;
+}
+
+.prfl_pic .img:after {
+  transform: rotate(90deg);
+}
+
+.prfl_name,
+.prfl_about h4 {
+  margin-bottom: 5px;
+}
+
+.prfl_about {
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.prfl_border {
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  padding: 1rem 0.5rem 1rem 1rem;
+}
+
+.prfl_pic {
+  margin-bottom: 10px;
+}
+
+.prfl_panel {
+  justify-content: space-around;
+}
+
+.prfl_panel button {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 0.4rem 1.2rem;
+  border-radius: 5px;
+}
+
+.post {
+  background: #f7f7f7;
+  padding: 0.75rem;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* .posts {
+  overflow: scroll;
+  height: 50vh;
+  margin-bottom: 10px;
+} */
+.pst_title {
+  position: relative;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+  padding-bottom: 0.5rem;
+}
+
+.pst_title:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50%;
+  height: 1px;
+  opacity: 0.25;
+  background: var(--primary-color);
+}
+
+.pst_content {
+  margin-bottom: 10px;
+}
+
+.pst_time {
+  text-align: right;
+  font-size: 0.5rem;
+  font-weight: 600;
+}
+
+textarea.inpt {
+  height: 100px;
+  resize: none;
 }

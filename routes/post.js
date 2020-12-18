@@ -35,7 +35,8 @@ router.post('/new', async (req, res) => {
     const { title, content } = req.body
     const post = new Post({ title, content, author })
     await post.save()
-    return res.redirect('/posts')
+    // return res.redirect('/posts')
+    return res.redirect(`/authors/${author}`)
   } catch (err) {
     res.status(500).json({ error: err })
   }
