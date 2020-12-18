@@ -342,6 +342,7 @@ h1 {
   color: var(--secondary-color);
   padding: 0.4rem 1.2rem;
   border-radius: 5px;
+  text-transform: uppercase;
 }
 
 .post {
