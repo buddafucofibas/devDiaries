@@ -102,7 +102,7 @@ router.post(
 router.get('/members', checkLogin, async (req, res) => {
   try {
     const authors = await Author.find()
-    const posts = await Post.find()
+    const posts = await Post.find().populate('author').exec()
     res.render('home/members', { authors, posts, req })
   } catch (err) {
     res.status(500).json({ error: err })
