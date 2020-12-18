@@ -1,14 +1,28 @@
 extends ../layout
 
 block content
-    //- .container
-    //-     .img_wrapper
-    //-         img(src="https://source.unsplash.com/featured/?journal", alt="")
-    //-     .columns
-    //-         .col
-    //-         .col
+    .container.members
+        .img_wrapper
+            img(src="https://source.unsplash.com/featured/?journal", alt="")
+        .columns.flex
+            .memb_authors.col.flex25.bg-dark
+                p.lead.ctr Authors
+                .break
+                each author in authors  
+                    a(href='/authors/' + author._id)
+                        .author_card.flex.bg-light
+                            .acpic_wrapper
+                                img.acpic(src="https://source.unsplash.com/featured/?headshot", alt="")
+                            div.flex.vcolcenter
+                                p.acname #{author.fullName}
+            .memb_posts.col.flex75
+                each post in posts
+                    a(href="/posts/" + post._id)
+                        .post
+                            p.pst_title #{post.title}
+                            p.pst_content #{post.content}
+                            p.pst_author #{post.author.fullName}
+                            p.pst_time #{post.dateCreated}
 
-    each author in authors
-        div
             
     
