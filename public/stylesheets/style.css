@@ -8,7 +8,6 @@
 body,
 html {
   height: 100%;
-  overflow: hidden;
 }
 
 button,
@@ -108,12 +107,36 @@ body {
   flex-basis: 66%;
 }
 
-.mr20 {
-  margin-right: 20px;
+.vcolcenter {
+  align-items: center;
+}
+
+.bg-dark {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 0.25rem;
+}
+
+.bg-light {
+  background: var(--light-color);
+  color: var(--primary-color);
+}
+
+.padding_light {
+  padding: 0.25rem;
+}
+
+.padding_med {
+  padding: 0.5rem;
+}
+
+.padding_lg {
+  padding: 1rem;
 }
 
 .container {
   max-width: 980px;
+  width: 95%;
   margin: auto;
 }
 
@@ -284,8 +307,78 @@ h1 {
   position: relative;
   left: 20px;
 }
+/* Members home styling */
 
-/* Member page styling */
+.container.members {
+  padding-top: 5rem;
+}
+
+.img_wrapper {
+  height: 250px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.img_wrapper img {
+  position: relative;
+  top: -50%;
+}
+p.lead {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 2.5px;
+  border-bottom-right-radius: 2.5px;
+  background: var(--secondary-color);
+  color: var(--primary-color);
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  padding: 1rem;
+  width: 95%;
+  margin: 0 auto 10px auto;
+}
+
+.break {
+  background: var(--secondary-color);
+  opacity: 0.5;
+  width: 90%;
+  margin: 20px auto;
+  height: 1px;
+}
+.memb_authors {
+  margin-right: 10px;
+  border-radius: 5px;
+  padding-top: 0.5rem;
+  height: max-content;
+}
+
+.author_card {
+  width: 95%;
+  margin: 10px auto;
+  border-radius: 5px;
+  padding: 0.25rem;
+}
+
+.acpic_wrapper {
+  width: 50%;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.acpic {
+  width: 100%;
+  object-fit: scale-down;
+}
+
+.acname {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Author page styling */
 .container.profile {
   padding-top: 5rem;
 }
@@ -354,11 +447,6 @@ h1 {
   box-shadow: 10px 5px 2px rgba(46, 64, 87, 0.8);
 }
 
-/* .posts {
-  overflow: scroll;
-  height: 50vh;
-  margin-bottom: 10px;
-} */
 .pst_title {
   position: relative;
   font-size: 1.1rem;
