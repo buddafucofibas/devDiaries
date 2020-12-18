@@ -1,33 +1,6 @@
 extends ../layout
 block content
 
-    //- h1 #{author.fullName}
-
-    //- if posts
-    //-     each post in posts
-    //-         a(href='/posts/' + post._id)
-    //-             div
-    //-                 h3 #{post.title}
-    //-                 p #{post.content}
-    //-                 p - #{author.fullName}
-    //-                 h6 #{post.dateCreated}
-    //- //- needs work
-    //- if owner
-
-    //-     div
-    //-         a(href='/authors/' + author._id + '/edit') 
-    //-             button Edit
-    //-     div
-    //-         form(action='/authors/' + author._id + '/delete?_method=DELETE' method='POST')
-    //-             button(type='submit') Delete
-
-    //- div
-    //-     a(href='/') 
-    //-         button Home
-    //- div
-    //-     a(href='/authors') 
-    //-         button Back
-
     .container.profile
         .columns.flex
             .col.flex33.mr20
@@ -55,13 +28,14 @@ block content
                                     p.pst_title #{post.title}
                                     p.pst_content #{post.content}
                                     p.pst_time #{post.dateCreated}
-                form(action='/posts/new' method='POST')
-                    .post.newPost
-                        div.flexcol
-                            label(for='title') Title
-                            input.inpt(type='text' id='title' name='title' required)
-                        div.flexcol
-                            label(for='content') Post
-                            textarea.inpt(id='content' name='content' required)
-                        button.home_nav.ctr(type="submit") Create Post
+                if owner
+                    form(action='/posts/new' method='POST')
+                        .post.newPost
+                            div.flexcol
+                                label(for='title') Title
+                                input.inpt(type='text' id='title' name='title' required)
+                            div.flexcol
+                                label(for='content') Post
+                                textarea.inpt(id='content' name='content' required)
+                            button.home_nav.ctr(type="submit") Create Post
                                 
