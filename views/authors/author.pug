@@ -3,10 +3,15 @@ block content
 
     .container.profile
         .columns.flex
-            .col.flex33
+            .col.flex33.mxr20
                 .author_bio.prfl_border
-                    .prfl_pic
-                        a(href="")
+                    if owner
+                        .prfl_pic
+                            a(href=href='/authors/' + author._id + '/edit')
+                                .img
+                                    img(src='/images/userProfiles/' + author._id + '.png', alt="breh")
+                    else
+                        .prfl_pic
                             .img
                     .prfl_name
                         h2 #{author.fullName}

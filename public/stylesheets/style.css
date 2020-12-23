@@ -134,6 +134,10 @@ body {
   padding: 1rem;
 }
 
+.mxr20 {
+  margin-right: 20px;
+}
+
 .container {
   max-width: 980px;
   width: 95%;
@@ -384,26 +388,10 @@ p.lead {
 }
 
 .prfl_pic .img {
-  position: relative;
-  height: 75px;
-  width: 75px;
-  background: var(--primary-color);
-  border-radius: 100%;
 }
 
-.prfl_pic .img:before,
-.prfl_pic .img:after {
-  content: '';
-  position: absolute;
-  height: 40px;
-  width: 5px;
-  background: var(--secondary-color);
-  top: 18.75px;
-  left: 35.25px;
-}
-
-.prfl_pic .img:after {
-  transform: rotate(90deg);
+.img img {
+  width: 100px;
 }
 
 .prfl_name,
@@ -479,4 +467,10 @@ p.lead {
 textarea.inpt {
   height: 100px;
   resize: none;
+}
+
+/* Author Edit page */
+
+.container.edit {
+  padding-top: 5rem;
 }

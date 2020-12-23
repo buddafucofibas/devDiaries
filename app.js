@@ -75,3 +75,5 @@ app.listen(port, () => {
 })
 
 console.clear()
+const test = path.join(__dirname, './uploads/image.png')
+console.log(test)

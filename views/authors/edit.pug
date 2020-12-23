@@ -1,16 +1,19 @@
 extends ../layout
 block content
-    h1 Form for editing #{author.firstName}'s information
-
-    form(action='/authors/' + author._id + '?_method=PATCH' method='POST')
-        div
-            label(for='firstName') First Name
-            input(type='text' id='firstName' name='firstName' value= author.firstName required)
-        div
-            label(for='lastName') Last Name
-            input(type='text' id='lastName' name='lastName' value= author.lastName required)
-        div
-            label(for='email') Email
-            input(type='email' id='email' name='email' value= author.email required)
-        
-        button Submit
+    .container.edit
+        form(action='/authors/' + author._id + '/image' method='post' enctype='multipart/form-data')
+            label(for='user_pic') Upload image
+            input(type='file' id='user_pic' name='image' required)
+            button Submit
+        form(action='/authors/' + author._id + '?_method=PATCH' method='POST')
+            div
+                label(for='firstName') First Name
+                input(type='text' id='firstName' name='firstName' value= author.firstName required)
+            div
+                label(for='lastName') Last Name
+                input(type='text' id='lastName' name='lastName' value= author.lastName required)
+            div
+                label(for='email') Email
+                input(type='email' id='email' name='email' value= author.email required)
+            
+            button Submit

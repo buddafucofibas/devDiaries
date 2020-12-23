@@ -1,5 +1,10 @@
 const express = require('express')
 const router = express.Router()
+const path = require('path')
+const fs = require('fs')
+const multer = require('multer')
+// i think this is where the images are temporarily uploaded
+const upload = multer({ dest: 'public/images/userProfiles/' })
 const { body, validationResult } = require('express-validator')
 const Author = require('../models/Author')
 const Post = require('../models/Post')
@@ -83,10 +88,33 @@ router.patch(
   }
 )
 
+router.post('/:id/image', upload.single('image'), (req, res) => {
+  // temporary file location
+  const tempPath = req.file.path
+  // where i want to save files
+  const targetPath = path.join(__dirname, `../public/images/userProfiles/${req.params.id}.png`)
+  // checks extension
+  if (path.extname(req.file.originalname).toLowerCase() == '.png') {
+    // renames the temp path to the final name
+    fs.rename(tempPath, targetPath, err => {
+      if (err) return res.end(err)
+      res.status(200).contentType('text/plain').end('File uploaded!')
+    })
+  }
+})
+
 router.delete('/:id/delete', checkIsOwner, async (req, res) => {
   const id = req.params.id
   try {
     // deletes author from database and removes user_id from session
+    const pic = path.join(__dirname, `../public/images/userProfiles/${req.params.id}.png`)
+    if (pic) {
+      fs.unlink(pic, err => {
+        if (err) {
+          console.log('no pic to remove')
+        }
+      })
+    }
     await Author.findByIdAndDelete(id)
     await Post.deleteMany({ author: id })
     req.session.user_id = null

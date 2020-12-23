@@ -12,7 +12,7 @@ block content
                     a(href='/authors/' + author._id)
                         .author_card.flex.bg-light
                             .acpic_wrapper
-                                img.acpic(src="https://source.unsplash.com/featured/?headshot", alt="")
+                                img.acpic(src='/images/userProfiles/' + author._id + '.png', alt="")
                             div.flex.vcolcenter
                                 p.acname #{author.fullName}
             .memb_posts.col.flex75
