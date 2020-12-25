@@ -314,7 +314,7 @@ h1 {
 /* Members home styling */
 
 .container.members {
-  padding-top: 5rem;
+  padding-top: 3.5rem;
 }
 
 .img_wrapper {
@@ -418,7 +418,8 @@ p.lead {
   justify-content: space-around;
 }
 
-.prfl_panel button {
+.prfl_panel button,
+.btn {
   background: var(--primary-color);
   color: var(--secondary-color);
   padding: 0.4rem 1.2rem;
@@ -467,10 +468,52 @@ p.lead {
 textarea.inpt {
   height: 100px;
   resize: none;
+  font: 1.2em/1.2 Lato;
 }
 
 /* Author Edit page */
 
 .container.edit {
   padding-top: 5rem;
+}
+
+/* Post page styling */
+.container.post_home {
+  padding: 3.5rem 2rem 0 2rem;
+}
+
+.post_wrapper {
+  background-color: #f7f7f7;
+  width: 95%;
+  max-width: 600px;
+  margin: auto;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 10px 5px 2px rgba(46, 64, 87, 0.3);
+}
+
+.post_title {
+  font: 2.5em/1.1 Lato;
+}
+
+.pst {
+  font-size: 2.5em;
+}
+
+.post_author {
+  font-size: 1em;
+}
+
+.post_content {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.post_date {
+  font: bold 0.5em/1 Lato;
+  text-align: right;
+}
+
+.post_wrapper .btn {
+  margin-right: 1em;
 }
