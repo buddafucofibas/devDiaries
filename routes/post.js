@@ -45,9 +45,9 @@ router.post('/new', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const id = req.params.id
-    const post = await Post.findById(id)
-    const isOwner = req.session.user_id === post.author._id.toString()
-    return res.render('posts/post', { post, isOwner, req })
+    const post = await Post.findById(id).populate('author').exec()
+    const owner = req.session.user_id === post.author._id.toString()
+    return res.render('posts/post', { post, owner, req })
   } catch (err) {
     res.status(500).json({ error: err })
   }
@@ -56,7 +56,7 @@ router.get('/:id', async (req, res) => {
 router.get('/:id/edit', checkIsOwner, async (req, res) => {
   const id = req.params.id
   const post = await Post.findById(id)
-  res.render('posts/edit', { post })
+  res.render('posts/edit', { post, req })
 })
 
 router.patch('/:id', checkIsOwner, async (req, res) => {
@@ -68,7 +68,7 @@ router.patch('/:id', checkIsOwner, async (req, res) => {
     post.content = content
     post.dateCreated = new Date()
     await post.save()
-    return res.redirect('/posts')
+    return res.redirect(`/authors/${req.session.user_id}`)
   } catch (err) {
     res.status(500).json({ error: err })
   }
