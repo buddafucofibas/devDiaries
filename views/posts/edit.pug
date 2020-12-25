@@ -1,13 +1,13 @@
 extends ../layout
 
 block content
-    h1 Edit post
-
-    form(action='/posts/' + post._id + '?_method=PATCH' method='POST')
-        div
-            label(for='title') Title
-            input(type='text' id='title' name='title' value=post.title required)
-        div
-            label(for='content') Post
-            textarea(id='content' name='content' required) #{post.content}
-        button(type="submit") Edit Post
+    .container.post_home
+        form(action='/posts/' + post._id + '?_method=PATCH' method='POST')
+            .post.newPost
+                .flexcol
+                    label(for='title') Title
+                    input.inpt(type='text' id='title' name='title' value=post.title required)
+                .flexcol
+                    label(for='content') Post
+                    textarea.inpt(id='content' name='content' required) #{post.content}
+                button.btn(type="submit") Edit Post        

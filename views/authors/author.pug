@@ -13,6 +13,7 @@ block content
                     else
                         .prfl_pic
                             .img
+                                img(src='/images/userProfiles/' + author._id + '.png', alt="breh")
                     .prfl_name
                         h2 #{author.fullName}
                     .prfl_about
@@ -28,7 +29,7 @@ block content
                 .posts
                     if posts
                         each post in posts
-                            a(href="")
+                            a(href="/posts/" + post._id)
                                 .post
                                     p.pst_title #{post.title}
                                     p.pst_content #{post.content}
@@ -36,10 +37,10 @@ block content
                 if owner
                     form(action='/posts/new' method='POST')
                         .post.newPost
-                            div.flexcol
+                            .flexcol
                                 label(for='title') Title
                                 input.inpt(type='text' id='title' name='title' required)
-                            div.flexcol
+                            .flexcol
                                 label(for='content') Post
                                 textarea.inpt(id='content' name='content' required)
                             button.home_nav.ctr(type="submit") Create Post

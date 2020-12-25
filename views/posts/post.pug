@@ -1,14 +1,17 @@
 extends ../layout
 
 block content
-    h2 #{post.title}
-    p #{post.content}
-    h6 #{post.author.fullName}
+    .container.post_home
+        .post_wrapper
+            .pst_title.pst #{post.title}
+            .post_content #{post.content}
+            .post_author - #{post.author.fullName}
+            .post_date #{post.dateCreated}
+            if owner
+                .post_panel.flex
+                    a(href='/posts/' + post._id + '/edit') 
+                        button.btn Edit
+                    form(action='/posts/' + post._id + '/delete?_method=DELETE' method='POST')
+                        button.btn(type='submit') Delete
 
-    if isOwner
-        div
-            button
-                a(href='/posts/' + post._id + '/edit') Edit
-        div
-            form(action='/posts/' + post._id +'/delete?_method=DELETE' method='POST')
-                button(type='submit') Delete
+        
