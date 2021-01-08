@@ -387,9 +387,6 @@ p.lead {
   padding-top: 5rem;
 }
 
-.prfl_pic .img {
-}
-
 .img img {
   width: 100px;
 }
@@ -425,6 +422,7 @@ p.lead {
   padding: 0.4rem 1.2rem;
   border-radius: 5px;
   text-transform: uppercase;
+  margin-top: 10px;
 }
 
 .post {
@@ -477,9 +475,22 @@ textarea.inpt {
   padding-top: 5rem;
 }
 
+.auth_edit {
+  background: #f7f7f7;
+  padding: 0.75rem;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  line-height: 1.5;
+  box-shadow: 10px 5px 2px rgba(46, 64, 87, 0.8);
+}
+
+#user_pic {
+  background: white;
+}
+
 /* Post page styling */
 .container.post_home {
-  padding: 3.5rem 2rem 0 2rem;
+  padding: 5rem 2rem 0 2rem;
 }
 
 .post_wrapper {
