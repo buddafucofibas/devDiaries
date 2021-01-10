@@ -5,7 +5,8 @@ block content
         .post_wrapper
             .pst_title.pst #{post.title}
             .post_content #{post.content}
-            .post_author - #{post.author.fullName}
+            .post_author 
+            a(href='/authors/' + post.author._id) #{post.author.fullName}
             .post_date #{post.dateCreated}
             if owner
                 .post_panel.flex

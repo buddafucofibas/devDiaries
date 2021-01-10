@@ -43,10 +43,6 @@ body {
 
 /***************** Utilities ****************/
 
-.hidden {
-  display: none !important;
-}
-
 .red_outline {
   border: 1px dashed red !important;
 }
@@ -149,6 +145,14 @@ body {
   text-align: center;
 }
 
+.show {
+  visibility: visible !important;
+}
+
+.stop-scroll {
+  overflow: hidden;
+}
+
 /****************** navBar styling ********************/
 .header {
   background-color: var(--primary-color);
@@ -246,8 +250,8 @@ h1 {
   border-radius: 10px;
   padding: 1rem 1rem 2.5rem 1rem;
   width: 90%;
-  max-width: 420px;
-  z-index: 1;
+  max-width: 480px;
+  /* z-index: 1; */
 }
 
 .home_heading {
@@ -311,6 +315,7 @@ h1 {
   position: relative;
   left: 20px;
 }
+
 /* Members home styling */
 
 .container.members {
@@ -431,7 +436,7 @@ p.lead {
   border-radius: 10px;
   margin-bottom: 10px;
   line-height: 1.5;
-  box-shadow: 10px 5px 2px rgba(46, 64, 87, 0.8);
+  box-shadow: 2px 2px 2px rgba(46, 64, 87, 0.8);
 }
 
 .pst_title {
@@ -490,17 +495,17 @@ textarea.inpt {
 
 /* Post page styling */
 .container.post_home {
-  padding: 5rem 2rem 0 2rem;
+  padding-top: 5rem;
 }
 
 .post_wrapper {
   background-color: #f7f7f7;
-  width: 95%;
   max-width: 600px;
   margin: auto;
   padding: 1rem;
   border-radius: 5px;
-  box-shadow: 10px 5px 2px rgba(46, 64, 87, 0.3);
+  box-shadow: 2px 2px 10px rgba(46, 64, 87, 0.3);
+  /* border: 1px solid #d5d5d5; */
 }
 
 .post_title {
@@ -527,4 +532,79 @@ textarea.inpt {
 
 .post_wrapper .btn {
   margin-right: 1em;
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .author_card .flex.vcolcenter {
+    display: none;
+  }
+
+  .acpic_wrapper {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .memb_authors {
+    display: none;
+  }
+
+  .columns.flex {
+    display: block;
+  }
+
+  .post {
+    box-shadow: 2px 2px 10px rgba(46, 64, 87, 0.3);
+    border: 1px solid #e6e6e6;
+    margin-bottom: 15px;
+  }
+
+  .pst_author {
+    display: inline-block;
+  }
+
+  .container.main_nav ul {
+    position: absolute;
+    display: block;
+    right: 0;
+    top: 46.4px;
+    width: 200px;
+    background: var(--primary-color);
+    font-size: 1.5rem;
+    padding: 1rem;
+    border-bottom-left-radius: 5px;
+    visibility: hidden;
+    z-index: 2;
+  }
+
+  .container.main_nav ul li {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container.profile .columns {
+    display: block;
+  }
+
+  .prfl {
+    margin-bottom: 20px;
+  }
+
+  .prfl_panel {
+    width: 80%;
+    margin: auto;
+  }
+
+  .landing_main {
+    position: static;
+    width: 100%;
+    margin: auto;
+  }
+}
+
+@media (min-width: 481px) {
+  .hamburger_wrapper {
+    display: none;
+  }
 }
