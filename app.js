@@ -19,7 +19,9 @@ require('dotenv').config()
 const port = process.env.PORT || 3000
 
 // connect to database
-const uri = process.env.ATLAS_URI
+const uri =
+  'mongodb+srv://testUser:publicPassForDemos@cluster0.ajy1j.mongodb.net/devDiaries?retryWrites=true&w=majority'
+
 mongoose.connect(
   uri,
   {
