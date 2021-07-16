@@ -70,10 +70,8 @@ app.use('/', indexRouter)
 app.use('/authors', checkLogin, authorRouter)
 app.use('/posts', checkLogin, postRouter)
 
-app.listen(port, () => {
-  console.log(`Server listening on http://localhost:${port}`)
-})
+app.listen(port)
 
-console.clear()
-const test = path.join(__dirname, './uploads/image.png')
-console.log(test)
+// console.clear()
+// const test = path.join(__dirname, './uploads/image.png')
+// console.log(test)
